@@ -15,11 +15,13 @@
  */
 package com.android.car.media.drawer;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import com.android.car.app.CarDrawerActivity;
-import com.android.car.app.CarDrawerAdapter;
-import com.android.car.app.DrawerItemViewHolder;
+
+import androidx.car.drawer.CarDrawerAdapter;
+import androidx.car.drawer.CarDrawerController;
+import androidx.car.drawer.DrawerItemViewHolder;
 
 /**
  * Subclass of CarDrawerAdapter used by the Media app.
@@ -28,7 +30,7 @@ import com.android.car.app.DrawerItemViewHolder;
  * {@link MediaItemsFetcher}. The current fetcher being used can be updated at runtime.
  */
 class MediaDrawerAdapter extends CarDrawerAdapter {
-    private final CarDrawerActivity mActivity;
+    private final CarDrawerController mDrawerController;
     private MediaItemsFetcher mCurrentFetcher;
     private MediaFetchCallback mFetchCallback;
     private int mCurrentScrollPosition;
@@ -49,9 +51,9 @@ class MediaDrawerAdapter extends CarDrawerAdapter {
         void onFetchEnd();
     }
 
-    MediaDrawerAdapter(CarDrawerActivity activity) {
-        super(activity, true /* showDisabledListOnEmpty */);
-        mActivity = activity;
+    MediaDrawerAdapter(Context context, CarDrawerController drawerController) {
+        super(context, true /* showDisabledListOnEmpty */);
+        mDrawerController = drawerController;
     }
 
     /**
@@ -133,7 +135,7 @@ class MediaDrawerAdapter extends CarDrawerAdapter {
         int scrollPosition = mCurrentFetcher.getScrollPosition();
         if (scrollPosition != MediaItemsFetcher.DONT_SCROLL
                 && mCurrentScrollPosition != scrollPosition) {
-            mActivity.scrollToPosition(scrollPosition);
+            mDrawerController.scrollToPosition(scrollPosition);
             mCurrentScrollPosition = scrollPosition;
         }
     }

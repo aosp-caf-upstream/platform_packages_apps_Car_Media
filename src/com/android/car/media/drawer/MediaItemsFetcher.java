@@ -20,12 +20,13 @@ import android.graphics.Bitmap;
 import android.media.MediaDescription;
 import android.text.TextUtils;
 
-import com.android.car.app.CarDrawerAdapter;
-import com.android.car.app.DrawerItemViewHolder;
 import com.android.car.apps.common.BitmapDownloader;
 import com.android.car.apps.common.BitmapWorkerOptions;
 import com.android.car.apps.common.UriUtils;
 import com.android.car.media.R;
+
+import androidx.car.drawer.CarDrawerAdapter;
+import androidx.car.drawer.DrawerItemViewHolder;
 
 /**
  * Component that handles fetching of items for {@link MediaDrawerAdapter}.
@@ -33,7 +34,7 @@ import com.android.car.media.R;
  * It also handles ViewHolder population and item clicks.
  */
 interface MediaItemsFetcher {
-    public static final int DONT_SCROLL = -1;
+    int DONT_SCROLL = -1;
 
     /**
      * Used to inform owning {@link MediaDrawerAdapter} that items have changed.
@@ -115,7 +116,7 @@ interface MediaItemsFetcher {
         holder.getIcon().setImageBitmap(iconBitmap);    // Ok to set null here for clearing.
         if (iconBitmap == null && description.getIconUri() != null) {
             int bitmapSize =
-                    context.getResources().getDimensionPixelSize(R.dimen.car_list_item_icon_size);
+                    context.getResources().getDimensionPixelSize(R.dimen.car_primary_icon_size);
             // We don't want to cache android resources as they are needed to be refreshed after
             // configuration changes.
             int cacheFlag = UriUtils.isAndroidResourceUri(description.getIconUri())

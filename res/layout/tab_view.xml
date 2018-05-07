@@ -14,17 +14,27 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/car_primary_icon_size"
+        android:layout_height="@dimen/car_primary_icon_size"
+        android:layout_marginBottom="@dimen/car_padding_0"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center_horizontal"
+        android:tint="@color/car_tint_inverse"/>
+
     <TextView
         android:id="@+id/title"
-        android:text="@string/media_browse_more"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/car_padding_1"
+        android:layout_gravity="center_horizontal"
+        android:maxLines="1"
+        android:maxWidth="@dimen/browse_tab_width"
+        android:ellipsize="end"
         android:includeFontPadding="false"
-        android:textAppearance="@style/TextAppearance.Car.Body1.Light"/>
-</FrameLayout>
+        android:textAppearance="@style/TextAppearance.Car.Body5.Light"/>
+
+</merge>

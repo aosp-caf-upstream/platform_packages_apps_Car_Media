@@ -14,19 +14,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<resources>
-    <declare-styleable name="MetadataView">
-        <!-- Style of media item metadata view -->
-        <attr name="style" format="enum">
-            <!-- Compact version (to be included in the bottom bar during browsing -->
-            <enum name="compact" value="0"/>
-            <!-- Normal version (to be included in the playback screen -->
-            <enum name="normal" value="1"/>
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="AppBarView">
-        <!-- Maximum number of tabs to show on the app bar -->
-        <attr name="max_tabs" format="integer"/>
-    </declare-styleable>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Transparent thumb, used to leave a gap between the two segments of the progress bar -->
+    <solid android:color="@android:color/transparent"/>
+    <size
+        android:width="@dimen/playback_seekbar_thumb_width"
+        android:height="@dimen/playback_seekbar_height"/>
+</shape>
